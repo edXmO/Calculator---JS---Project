@@ -1,0 +1,19 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+/* Seteo margin/padding de cada elemento HTML a cero
+box-sizing: border-box cambia el modelo de caja para 
+que el padding y el borde de un elemento no aumente
+con la anchura */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+.calculator {
+    border: 1px solid #ccc;
+
+}
