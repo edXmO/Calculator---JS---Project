@@ -39,6 +39,7 @@ Centrandolos con position absolute y dandoles tamaño fijo */
     text-align: 20px;
     padding-right: 20px;
     padding-left: 10px;
+    border-radius: 5px;
 }
 
 button {
@@ -83,4 +84,13 @@ button:hover {
 #equals:hover {
     background-color: #4e9ed4;
 }
+
+
+/* CSS Layout - Imitando a una calculadora CASIO fx-82MS */
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 5px;
 }
