@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Calculator</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <script src="/scripts/main.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/main.js"></script>
 </head>
 
 <body>
     <div class="calculator">
-        <input type="text" class="calculator-screen" value="0" disabled />
+        <input type="text" id="display" value="0" disabled />
 
         <div class="calculator-keys">
             <button type="button" class="operator" id="add" value="+">+</button>
             <button type="button" class="operator" id="subtract" value="-">-</button>
-            <button type="button" class="operator" id="multiply" value="*">times</button>
-            <button type="button" class="operator" id="divide" value="/">divide</button>
+            <button type="button" class="operator" id="multiply" value="*">x</button>
+            <button type="button" class="operator" id="divide" value="/">/</button>
 
 
             <button type="button" id="seven" value="7">7</button>
@@ -36,7 +36,7 @@
 
 
             <button type="button" id="zero" value="0">0</button>
-            <button type="button" id="decimal" value="decimal">"."</button>
+            <button type="button" id="decimal" value="decimal">.</button>
             <button type="button" id="clear" value="all-clear">AC</button>
 
             <button type="button" id="equals" value="=">=</button>

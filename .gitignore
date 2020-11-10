@@ -1,0 +1,5 @@
+#Definimos ruta de archivos que no 
+#queremos que vayan al control de versiones
+
+/nocommit
+/nocommit/nocommit.txt
