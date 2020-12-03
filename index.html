@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <div class="calculator">
-        <input type="text" id="display" value="0" disabled />
+    <div class="calculator" onclick="onKeyPress()">
+        <input type="text" id="display" value="0" onclick="displayNumber()" disabled />
 
         <div class="calculator-keys">
             <button type="button" class="operator" id="add" value="+">+</button>
@@ -37,11 +37,9 @@
 
             <button type="button" id="zero" value="0">0</button>
             <button type="button" id="decimal" value="decimal">.</button>
-            <button type="button" id="clear" value="all-clear">AC</button>
+            <button type="button" id="clear" onclick="clearScreen()" value="0">AC</button>
 
             <button type="button" id="equals" value="=">=</button>
-
-
         </div>
     </div>
 

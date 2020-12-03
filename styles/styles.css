@@ -40,6 +40,7 @@ Centrandolos con position absolute y dandoles tamaño fijo */
     padding-right: 20px;
     padding-left: 10px;
     border-radius: 5px;
+    text-align: right;
 }
 
 button {
