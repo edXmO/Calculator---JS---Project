@@ -29,7 +29,7 @@ Centrandolos con position absolute y dandoles tamaño fijo */
 
 
 /* Estilo para la pantalla de la calculadora */
-#display {
+.calculator__display {
     width: 100%;
     font-size: 5rem;
     height: 80px;
@@ -62,7 +62,7 @@ button:hover {
 
 /* Estilo de los botones */
 /* Estilando operadores y enteros por separado */
-.operator {
+.key--operator {
     color: #337cac;
 }
 
@@ -76,7 +76,7 @@ button:hover {
     background-color: #f17377;
 }
 
-#equals {
+#key--equals {
     background-color: #2e86c0;
     border-color: #337cac;
     color: #fff;
@@ -89,7 +89,7 @@ button:hover {
 
 /* CSS Layout - Imitando a una calculadora CASIO fx-82MS */
 
-.calculator-keys {
+.calculator__keyPressed{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
