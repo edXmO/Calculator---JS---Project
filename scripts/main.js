@@ -43,6 +43,7 @@ keys.addEventListener('click', e => {
                 display.textContent = displayNum + keyContent
             }
             Array.from(document.getElementsByClassName('operator')).forEach(el => el.classList.remove('is-depressed'));
+            calculator.dataset.previousKey = 'number';
         }
         // If button pressed is an operator:
         if (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') {
@@ -55,13 +56,24 @@ keys.addEventListener('click', e => {
             calculator.dataset.previousKeyType = 'key--operator';
             calculator.dataset.firstValue = displayNum;
             calculator.dataset.operator = action;
+            //Only operate if first value and operator exist, since secondValue is the displayNum const
+            if (firstValue && operator) {
+                display.textContent = operate(firstValue, operator, secondValue);
+            }
         }
         if (action === 'decimal') {
-            display.textContent = displayNum + '.'
-            console.log('decimal key pressed')
+            //Avoid displaying another '.' decimal if there's one already displayed
+            if (!displayNum.includes('.')) {
+                display.textContent = displayNum + '.'
+                console.log('decimal key pressed')
+            } else if (previousKeyType === 'operator') {
+                display.textContent = '0.';
+            }
+            calculator.dataset.previousKey = 'decimal';
         }
         if (action === 'clear-display') {
             console.log('clear key pressed')
+            calculator.dataset.previousKey = 'clear-display';
         }
         if (action === 'operate') {
             const firstValue = calculator.dataset.firstValue
@@ -70,9 +82,8 @@ keys.addEventListener('click', e => {
 
             display.textContent = operate(firstValue, operator, secondValue)
             console.log('equal key pressed')
+            calculator.dataset.previousKey = 'operate';
         }
-        // Removing the .is-depressed class from buttons so we can introduce
-        // the next number of the operation
     }
 })
 
