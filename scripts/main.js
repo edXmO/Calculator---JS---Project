@@ -43,9 +43,21 @@ keys.addEventListener('click', e => {
                 display.textContent = displayNum + keyContent
             }
             Array.from(document.getElementsByClassName('operator')).forEach(el => el.classList.remove('is-depressed'));
+            calculator.dataset.previousKey = 'number';
         }
         // If button pressed is an operator:
         if (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') {
+            const firstValue = calculator.dataset.firstValue
+            const operator = calculator.dataset.operator
+            const secondValue = displayNum
+            if (firstValue && operator && previousKeyType !== 'operator') {
+                const calcValue = operate(firstValue, operator, secondValue)
+                display.textContent = calcValue
+                //Update calculated val as first value
+                calculator.dataset.firstValue = calcValue
+            } else {
+                calculator.dataset.firstValue = displayNum
+            }
             // To acknowledge the previous and next value
             // adding the class is depressed so the operator is highlighted
             key.classList.add('.is-depressed');
@@ -53,26 +65,27 @@ keys.addEventListener('click', e => {
             // if previous key is an operator key.
             // Adding custom attribute => data-previous-key-type
             calculator.dataset.previousKeyType = 'key--operator';
-            calculator.dataset.firstValue = displayNum;
             calculator.dataset.operator = action;
         }
         if (action === 'decimal') {
-            display.textContent = displayNum + '.'
-            console.log('decimal key pressed')
+            //Avoid displaying another decimal point, if there's one already displayed
+            if (!displayNum.includes('.')) {
+                display.textContent = displayNum + '.'
+                console.log('decimal key pressed')
+            } else if (previousKeyType === 'operator') {
+                display.textContent = '0.';
+            }
+            calculator.dataset.previousKey = 'decimal';
         }
         if (action === 'clear-display') {
             console.log('clear key pressed')
+            calculator.dataset.previousKey = 'clear-display';
         }
         if (action === 'operate') {
-            const firstValue = calculator.dataset.firstValue
-            const operator = calculator.dataset.operator
-            const secondValue = displayNum
-
             display.textContent = operate(firstValue, operator, secondValue)
             console.log('equal key pressed')
+            calculator.dataset.previousKey = 'operate';
         }
-        // Removing the .is-depressed class from buttons so we can introduce
-        // the next number of the operation
     }
 })
 
